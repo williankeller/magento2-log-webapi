@@ -15,9 +15,6 @@
     <preference for="Magestat\LogWebapi\Api\LoggerInterface" type="Magestat\LogWebapi\Model\Logger"/>
 
     <!-- Plugins -->
-    <type name="Magento\Webapi\Controller\Rest">
-        <plugin name="magestat-rest-dispatch" type="Magestat\LogWebapi\Plugin\Rest\Dispatch"/>
-    </type>
     <type name="Magento\Framework\Webapi\Rest\Response">
         <plugin name="magestat-rest-response" type="Magestat\LogWebapi\Plugin\Rest\Response"/>
     </type>

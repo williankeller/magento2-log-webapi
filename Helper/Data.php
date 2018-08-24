@@ -13,8 +13,9 @@
 namespace Magestat\LogWebapi\Helper;
 
 use Magento\Store\Model\ScopeInterface;
+use Magento\Framework\App\Helper\AbstractHelper;
 
-class Data extends \Magento\Framework\App\Helper\AbstractHelper
+class Data extends AbstractHelper
 {
     /**
      * Check if module is active.
@@ -30,10 +31,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * Check if module is active.
+     * Directory path to save log file.
      *
      * @param null $storeId
-     * @return bool
+     * @return string
      */
     public function directory($storeId = null)
     {
@@ -43,15 +44,41 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * Check if module is active.
+     * Attributes to be removed from log.
      *
      * @param null $storeId
-     * @return bool
+     * @return string
+     */
+    public function filters($storeId = null)
+    {
+        return $this->getConfig(
+            'magestat_logwebapi/settings/filter', $storeId
+        );
+    }
+
+    /**
+     * What kind of format should be created.
+     *
+     * @param null $storeId
+     * @return string
      */
     public function format($storeId = null)
     {
         return $this->getConfig(
             'magestat_logwebapi/settings/format', $storeId
+        );
+    }
+
+    /**
+     * Return if should print as pretty format.
+     *
+     * @param null $storeId
+     * @return bool
+     */
+    public function printing($storeId = null)
+    {
+        return (bool) $this->getConfig(
+            'magestat_logwebapi/settings/printing', $storeId
         );
     }
 

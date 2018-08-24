@@ -12,8 +12,8 @@
 
 namespace Magestat\LogWebapi\Plugin\Rest;
 
+use Magento\Framework\Webapi\Rest\Response as RestResponse;
 use Magestat\LogWebapi\Api\LoggerInterface;
-
 /**
  * Intercept front controller for WebAPI REST area.
  */
@@ -38,11 +38,14 @@ class Response
         $this->logger = $logger;
     }
 
-    public function afterSendResponse(
-        \Magento\Framework\Webapi\Rest\Response $subject, $result
-    ) {
-        $this->logger->create()->info('teste 2');
-        
-        return $result;
+    /**
+     * {@inheritdoc}
+     *
+     * @param RestResponse $subject
+     * @param array $outputData
+     */
+    public function beforePrepareResponse(RestResponse $subject, $outputData = null)
+    {
+        $this->logger->builder($outputData)->create();
     }
 }

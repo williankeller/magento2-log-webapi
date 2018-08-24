@@ -1,6 +1,6 @@
 {
     "name": "magestat/module-log-webapi",
-    "description": "Log Webapi | Module provides log in file for all transactions in Web API.",
+    "description": "This extension creates a log file and saves all transactions that are requested through your store's Rest API.",
     "type": "magento2-module",
     "license": "OSL-3.0",
     "version": "1.0.0",

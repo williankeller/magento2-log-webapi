@@ -12,10 +12,10 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="magestat" translate="label" sortOrder="1">
-            <label><![CDATA[AB-InBev]]></label>
+        <tab id="magestat" translate="label" sortOrder="900">
+            <label>Magestat</label>
         </tab>
-        <section id="magestat_logwebapi" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+        <section id="magestat_logwebapi" showInDefault="1">
             <tab>magestat</tab>
             <label>Log Webapi</label>
             <resource>Magestat_LogWebapi::config</resource>
@@ -34,6 +34,14 @@
                 <field id="format" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Log Archiving Frequency</label>
                     <source_model>Magestat\LogWebapi\Model\Source\Format</source_model>
+                </field>
+                <field id="filter" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Attributes to be removed from log file.</label>
+                    <comment>Separeted by comma (,)</comment>
+                </field>
+                <field id="printing" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Print Pretty Result</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>
         </section>

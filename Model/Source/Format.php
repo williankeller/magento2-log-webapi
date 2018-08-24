@@ -12,9 +12,6 @@
 
 namespace Magestat\LogWebapi\Model\Source;
 
-/**
- * Source model for logging file type format.
- */
 class Format implements \Magento\Framework\Option\ArrayInterface
 {
     /**
