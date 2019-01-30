@@ -1,4 +1,4 @@
-Log WebApi for Magento 2
+Log WebApi transactions for Magento 2
 =====================
 
 This extension creates a log file and saves all transactions that are requested through your store's Rest API.
