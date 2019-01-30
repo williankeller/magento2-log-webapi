@@ -39,8 +39,8 @@ php bin/magento cache:clean
 
 1. Go to **Stores** > **Configuration** > **Magestat** > **Log Webapi**.
 2. Select **Enabled** option to enable module.
-3. Open Settings TAB.
-4. Fill required field, like, "Path to Log File" field.
+3. Open d**Settingsd** Tab.
+4. Fill required field, like, d**Path to Log Filed** field.
 
 ## Contribution
 
@@ -51,6 +51,6 @@ Want to contribute to this extension? The quickest way is to open a [pull reques
 
 If you encounter any problems or bugs, please open an issue on [GitHub](https://github.com/magestat/magento2-log-webapi/issues).
 
-Need help setting up or want to customize this extension to meet your business needs? Please email support@magestat.com and if we like your idea we will add this feature for free or at a discounted rate.
+Need help setting up or want to customize this extension to meet your business needs? If we like your idea we will add this feature for free or at a discounted rate.
 
-© Magestat. | [www.magestat.com](http:/www.magestat.com)
+© Magestat.
