@@ -20,24 +20,30 @@ use Magestat\LogWebapi\Helper\Data as Helper;
 class Logger implements LoggerInterface
 {
     /**
+     * @var \Magento\Framework\HTTP\PhpEnvironment\Request
+     */
+    private $header;
+
+    /**
      * @var \Magestat\LogWebapi\Helper\Data
      */
-    protected $helper;
+    private $helper;
 
     /**
      * @var array $content
      */
-    protected $content = [];
+    private $content = [];
 
     /**
+     * @param RequestHeader $header
      * @param Helper $helper
      */
     public function __construct(
         RequestHeader $header,
         Helper $helper
     ) {
-        $this->helper = $helper;
         $this->header = $header;
+        $this->helper = $helper;        
     }
 
     /**
