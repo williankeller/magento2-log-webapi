@@ -12,17 +12,33 @@
 
 namespace Magestat\LogWebapi\Model;
 
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\HTTP\PhpEnvironment\Request as RequestHeader;
+use Magento\Framework\Serialize\SerializerInterface;
+
 use Magestat\LogWebapi\Api\LoggerInterface;
+use Magestat\LogWebapi\Api\Handler\LogFileInterface;
 use Magestat\LogWebapi\Helper\Data as Helper;
 
+/**
+ * Class Logger
+ * @package Magestat\LogWebapi\Model
+ */
 class Logger implements LoggerInterface
 {
+    /**
+     * @var \Magento\Framework\Serialize\SerializerInterface
+     */
+    private $serializer;
+
     /**
      * @var \Magento\Framework\HTTP\PhpEnvironment\Request
      */
     private $header;
+
+    /**
+     * @var \Magestat\LogWebapi\Api\LogFileInterface
+     */
+    private $file;
 
     /**
      * @var \Magestat\LogWebapi\Helper\Data
@@ -30,24 +46,26 @@ class Logger implements LoggerInterface
     private $helper;
 
     /**
-     * @var array $content
-     */
-    private $content = [];
-
-    /**
+     * Logger constructor.
+     * @param SerializerInterface $serializer
      * @param RequestHeader $header
+     * @param LogFileInterface $file
      * @param Helper $helper
      */
     public function __construct(
+        SerializerInterface $serializer,
         RequestHeader $header,
+        LogFileInterface $file,
         Helper $helper
     ) {
+        $this->serializer = $serializer;
         $this->header = $header;
-        $this->helper = $helper;        
+        $this->file = $file;
+        $this->helper = $helper;
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function isEnable()
     {
@@ -58,9 +76,9 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function builder($response)
+    public function write($content)
     {
         // Build contend data.
         $data = [
@@ -68,108 +86,50 @@ class Logger implements LoggerInterface
                 'method'  => $this->header->getMethod(),
                 'uri'     => $this->header->getRequestUri(),
                 'headers' => (array) $this->header->getHeaders()->toArray(),
-                'body'    => (array) json_decode($this->header->getContent())
+                'body'    => (array) $this->serializer->unserialize($this->header->getContent())
             ],
-            'RESPONSE:' => $response,
+            'RESPONSE:' => $content,
         ];
-        $filtered = $this->filterData($data);
-
+        $filtered = $this->filterContent($data);
         // Update content variable globally.
-        $this->content = $this->toContent($filtered);
+        $this->file->create($this->buildContent($filtered));
 
         return $this;
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function filterData($array)
+    public function filterContent($array)
     {
         if (!$this->helper->filters()) {
             return $array;
         }
-        // Retrieve filtrable keys.
-        $needleKey = explode(self::SEPARATOR, $this->helper->filters());
+        // Retrieve filterable keys.
+        $needleKey = \explode(self::SEPARATOR, $this->helper->filters());
 
         foreach ($array as $key => $value) {
-            if (in_array($key, $needleKey)) {
+            if (\in_array($key, $needleKey)) {
                 unset($array[$key]);
             }
-            if (is_array($value)) {
-                $array[$key] = $this->filterData($value);
+            if (\is_array($value)) {
+                $array[$key] = $this->filterContent($value);
             }
         }
         return $array;
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function toContent($data)
+    public function buildContent($data)
     {
-        $content = json_encode($data);
+        $content = $this->serializer->serialize($data);
 
+        // Should print content using JSON pretty print format.?
         if (!$this->helper->printing()) {
-            // Json pertty print format.
             $content = json_encode($data, JSON_PRETTY_PRINT);
         }
         return (string) PHP_EOL . date(self::LOG_DATE_FORMAT) . ' ' . $content;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function create()
-    {
-        try {
-            file_put_contents($this->directory(), $this->content, FILE_APPEND);
-        }
-        catch (Exception $exception) {
-            throw new LocalizedException(
-                __('Unable to write to LogAPI file.'), $exception
-            );
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function directory()
-    {
-        try {
-            $folder = BP . $this->helper->directory();
-
-            if (!file_exists($folder)) {
-                mkdir($folder, self::PERMISSION, true);
-            }
-            return $folder . $this->fileType();
-        }
-        catch (Exception $exception) {
-            throw new LocalizedException(
-                __('Unable to create LogAPI directory.'), $exception
-            );
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fileType()
-    {
-        switch ($this->helper->format()) {
-            // Build a log file per day with daily data.
-            case 1:
-                $filename = date(self::FILE_FORMAT);
-                break;
-            // Build a unique file with all data there.
-            case 2:
-                $filename = self::FILE_NAME;
-                break;
-            // Default.
-            default:
-                $filename = self::FILE_NAME;
-                break;
-        }
-        return $filename . self::FILE_EXT;
     }
 }

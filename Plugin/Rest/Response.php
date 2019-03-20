@@ -14,8 +14,11 @@ namespace Magestat\LogWebapi\Plugin\Rest;
 
 use Magento\Framework\Webapi\Rest\Response as RestResponse;
 use Magestat\LogWebapi\Api\LoggerInterface;
+
 /**
+ * Class Response
  * Intercept front controller for WebAPI REST area.
+ * @package Magestat\LogWebapi\Plugin\Rest
  */
 class Response
 {
@@ -39,13 +42,13 @@ class Response
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @param RestResponse $subject
      * @param array $outputData
      */
     public function beforePrepareResponse(RestResponse $subject, $outputData = null)
     {
-        $this->logger->builder($outputData)->create();
+        $this->logger->write($outputData);
     }
 }
