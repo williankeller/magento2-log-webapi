@@ -12,36 +12,13 @@
 
 namespace Magestat\LogWebapi\Api;
 
+/**
+ * Interface LoggerInterface
+ * @package Magestat\LogWebapi\Api
+ * @api
+ */
 interface LoggerInterface
 {
-    /**
-     * Define path permission that will be created.
-     *
-     * @var int
-     */
-    const PERMISSION = 0775;
-
-    /**
-     * Define file extension.
-     *
-     * @var string
-     */
-    const FILE_EXT = '.log';
-
-    /**
-     * Define a default file name.
-     *
-     * @var string
-     */
-    const FILE_NAME = 'webapi';
-
-    /**
-     * Define a date format to file name.
-     *
-     * @var string
-     */
-    const FILE_FORMAT = 'Y-m-d';
-
     /**
      * Define a date format to be write in file log.
      *
@@ -64,12 +41,12 @@ interface LoggerInterface
     public function isEnable();
 
     /**
-     * Build log structure with request data and response.
+     * Build log structure with request data, response and write it to log file.
      *
      * @param array $response
      * @return $this
      */
-    public function builder($response);
+    public function write($response);
 
     /**
      * Method used to remove attributes from a log file.
@@ -77,7 +54,7 @@ interface LoggerInterface
      * @param array $data
      * @return array
      */
-    public function filterData($data);
+    public function filterContent($data);
 
     /**
      * Build content to JSON format version and add log date.
@@ -85,27 +62,5 @@ interface LoggerInterface
      * @param array $data
      * @return string
      */
-    public function toContent($data);
-
-    /**
-     * Build log content to a file.
-     *
-     * @return void
-     * @throws LocalizedException
-     */
-    public function create();
-
-    /**
-     * Create directory to build log file.
-     *
-     * @return string $file
-     */
-    public function directory();
-
-    /**
-     * Return file type name with extension.
-     *
-     * @return string
-     */
-    public function fileType();
+    public function buildContent($data);
 }

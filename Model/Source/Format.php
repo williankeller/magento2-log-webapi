@@ -12,6 +12,10 @@
 
 namespace Magestat\LogWebapi\Model\Source;
 
+/**
+ * Class Format
+ * @package Magestat\LogWebapi\Model\Source
+ */
 class Format implements \Magento\Framework\Option\ArrayInterface
 {
     /**
