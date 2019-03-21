@@ -1,9 +1,9 @@
-Log WebApi transactions for Magento 2
+Log Web API transactions for Magento 2
 =====================
 
 This extension creates a log file and saves all transactions that are requested through your store's Rest API.
 
-[![Packagist](https://img.shields.io/packagist/v/magestat/module-log-webapi.svg)](https://packagist.org/packages/magestat/module-log-webapi)
+[![Build Status](https://travis-ci.org/magestat/magento2-log-webapi.svg?branch=develop)](https://travis-ci.org/magestat/magento2-log-webapi) [![Packagist](https://img.shields.io/packagist/v/magestat/module-log-webapi.svg)](https://packagist.org/packages/magestat/module-log-webapi)
 
 ## 1. Installation
 
@@ -38,9 +38,9 @@ php bin/magento cache:clean
 ## 3. Configuration
 
 1. Go to **Stores** > **Configuration** > **Magestat** > **Log Webapi**.
-2. Select **Enabled** option to enable module.
-3. Open d**Settingsd** Tab.
-4. Fill required field, like, d**Path to Log Filed** field.
+2. Select **Enabled** option to enable the module.
+3. Expand **Settings** Tab.
+4. Fill the required fields.
 
 ## Contribution
 
