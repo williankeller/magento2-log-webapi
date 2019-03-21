@@ -47,8 +47,10 @@ class Response
      * @param RestResponse $subject
      * @param array $outputData
      */
+    // @codingStandardsIgnoreStart
     public function beforePrepareResponse(RestResponse $subject, $outputData)
     {
+        // codingStandardsIgnoreEnd
         $this->logger->write($outputData);
     }
 }
