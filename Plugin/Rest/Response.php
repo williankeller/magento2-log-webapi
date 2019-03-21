@@ -28,11 +28,6 @@ class Response
     private $logger;
 
     /**
-     * @var array
-     */
-    private $currentRequest;
-
-    /**
      * @param LoggerInterface $logger
      */
     public function __construct(
@@ -46,11 +41,14 @@ class Response
      *
      * @param RestResponse $subject
      * @param array $outputData
+     * @see \Magento\Framework\Webapi\Rest\Response::prepareResponse
      */
     // @codingStandardsIgnoreStart
     public function beforePrepareResponse(RestResponse $subject, $outputData)
     {
         // codingStandardsIgnoreEnd
-        $this->logger->write($outputData);
+        if ($this->logger->isEnable()) {
+            $this->logger->write($outputData);
+        }
     }
 }

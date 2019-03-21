@@ -126,8 +126,8 @@ class Logger implements LoggerInterface
     {
         $content = $this->serializer->serialize($data);
 
-        // Should print content using JSON pretty print format.?
-        if (!$this->helper->printing()) {
+        // Should print content using JSON pretty print format?
+        if ($this->helper->printing()) {
             $content = json_encode($data, JSON_PRETTY_PRINT);
         }
         return (string) PHP_EOL . date(self::LOG_DATE_FORMAT) . ' ' . $content;

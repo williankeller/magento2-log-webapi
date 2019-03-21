@@ -41,7 +41,7 @@ interface LoggerInterface
     public function isEnable();
 
     /**
-     * Build log structure with request data, response and write it to log file.
+     * Build request and response structure and write it to the log file.
      *
      * @param array $response
      * @return $this
@@ -49,7 +49,7 @@ interface LoggerInterface
     public function write($response);
 
     /**
-     * Method used to remove attributes from a log file.
+     * Used to remove (filter) attributes from the log file.
      *
      * @param array $data
      * @return array
@@ -57,7 +57,7 @@ interface LoggerInterface
     public function filterContent($data);
 
     /**
-     * Build content to JSON format version and add log date.
+     * Build content structure including time.
      *
      * @param array $data
      * @return string
