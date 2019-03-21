@@ -12,8 +12,8 @@
 
 namespace Magestat\LogWebapi\Model;
 
-use Magento\Framework\HTTP\PhpEnvironment\Request as RequestHeader;
 use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\HTTP\PhpEnvironment\Request\Proxy as HttpRequest;
 
 use Magestat\LogWebapi\Api\LoggerInterface;
 use Magestat\LogWebapi\Api\Handler\LogFileInterface;
@@ -48,13 +48,13 @@ class Logger implements LoggerInterface
     /**
      * Logger constructor.
      * @param SerializerInterface $serializer
-     * @param RequestHeader $header
+     * @param HttpRequest $header
      * @param LogFileInterface $file
      * @param Helper $helper
      */
     public function __construct(
         SerializerInterface $serializer,
-        RequestHeader $header,
+        HttpRequest $header,
         LogFileInterface $file,
         Helper $helper
     ) {
