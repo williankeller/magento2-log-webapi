@@ -12,9 +12,13 @@
 
 namespace Magestat\LogWebapi\Helper;
 
-use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\App\Helper\AbstractHelper;
+use Magento\Store\Model\ScopeInterface;
 
+/**
+ * Class Data
+ * @package Magestat\LogWebapi\Helper
+ */
 class Data extends AbstractHelper
 {
     /**
@@ -25,9 +29,7 @@ class Data extends AbstractHelper
      */
     public function isActive($storeId = null)
     {
-        return (bool) $this->getConfig(
-            'magestat_logwebapi/module/enabled', $storeId
-        );
+        return (bool) $this->getConfig('magestat_logwebapi/module/enabled', $storeId);
     }
 
     /**
@@ -38,9 +40,7 @@ class Data extends AbstractHelper
      */
     public function directory($storeId = null)
     {
-        return $this->getConfig(
-            'magestat_logwebapi/settings/directory', $storeId
-        );
+        return $this->getConfig('magestat_logwebapi/settings/directory', $storeId);
     }
 
     /**
@@ -51,9 +51,7 @@ class Data extends AbstractHelper
      */
     public function filters($storeId = null)
     {
-        return $this->getConfig(
-            'magestat_logwebapi/settings/filter', $storeId
-        );
+        return $this->getConfig('magestat_logwebapi/settings/filter', $storeId);
     }
 
     /**
@@ -64,9 +62,7 @@ class Data extends AbstractHelper
      */
     public function format($storeId = null)
     {
-        return $this->getConfig(
-            'magestat_logwebapi/settings/format', $storeId
-        );
+        return $this->getConfig('magestat_logwebapi/settings/format', $storeId);
     }
 
     /**
@@ -77,9 +73,7 @@ class Data extends AbstractHelper
      */
     public function printing($storeId = null)
     {
-        return (bool) $this->getConfig(
-            'magestat_logwebapi/settings/printing', $storeId
-        );
+        return (bool) $this->getConfig('magestat_logwebapi/settings/printing', $storeId);
     }
 
     /**
@@ -91,8 +85,6 @@ class Data extends AbstractHelper
      */
     public function getConfig($path, $storeId = null)
     {
-        return $this->scopeConfig->getValue(
-            $path, ScopeInterface::SCOPE_STORE, $storeId
-        );
+        return $this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORE, $storeId);
     }
 }
