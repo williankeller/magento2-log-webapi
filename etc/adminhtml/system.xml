@@ -17,7 +17,7 @@
         </tab>
         <section id="magestat_logwebapi" showInDefault="1">
             <tab>magestat</tab>
-            <label>Log Webapi</label>
+            <label>Log Web API</label>
             <resource>Magestat_LogWebapi::config</resource>
             <group id="module" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
                 <label>Enable Module</label>
@@ -37,7 +37,7 @@
                 </field>
                 <field id="filter" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Attributes to be removed from log file.</label>
-                    <comment>Separeted by comma (,)</comment>
+                    <comment>Separated by comma (,)</comment>
                 </field>
                 <field id="printing" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Print Pretty Result</label>

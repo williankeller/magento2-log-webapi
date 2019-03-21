@@ -10,10 +10,9 @@
  * Please see LICENSE.txt for the full text of the OSL 3.0 license
  */
 
-namespace Magestat\LogWebapi\Model;
+namespace Magestat\LogWebapi\Model\Handler;
 
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\Filesystem\Driver\File;
 
 use Magestat\LogWebApi\Api\Handler\LogFileInterface;
@@ -37,16 +36,13 @@ class LogFile implements LogFileInterface
 
     /**
      * LogFile constructor.
-     * @param SerializerInterface $serializer
      * @param File $file
      * @param Helper $helper
      */
     public function __construct(
-        SerializerInterface $serializer,
         File $file,
         Helper $helper
     ) {
-        $this->serializer = $serializer;
         $this->file = $file;
         $this->helper = $helper;
     }
@@ -56,12 +52,7 @@ class LogFile implements LogFileInterface
      */
     public function write($content)
     {
-        $filename = $this->buildFileName();
-
-        if (!$this->file->isWritable($filename)) {
-            throw new LocalizedException(__('Unable to write to LogAPI file.'));
-        }
-        $this->file->filePutContents($filename, $content, FILE_APPEND);
+        $this->file->filePutContents($this->buildFileName(), $content, FILE_APPEND);
     }
 
     /**
@@ -69,8 +60,8 @@ class LogFile implements LogFileInterface
      */
     public function createDirectory()
     {
-        $directory = BP . $this->helper->directory();
-        $this->file->checkAndCreateFolder($directory, self::PERMISSION);
+        $directory = BP . '/' . $this->helper->directory();
+        $this->file->createDirectory($directory, self::PERMISSION);
 
         return $directory;
     }

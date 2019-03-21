@@ -26,8 +26,8 @@ class Format implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray()
     {
         return [
-            ['value' => 1, 'label' => __('Create a File by Day')],
-            ['value' => 2, 'label' => __('All Data in Unique File')]
+            ['value' => 1, 'label' => __('Create a Different File Each Day')],
+            ['value' => 2, 'label' => __('Concat All the Data to the Same File')]
         ];
     }
 }

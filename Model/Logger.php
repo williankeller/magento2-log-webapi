@@ -86,13 +86,13 @@ class Logger implements LoggerInterface
                 'method'  => $this->header->getMethod(),
                 'uri'     => $this->header->getRequestUri(),
                 'headers' => (array) $this->header->getHeaders()->toArray(),
-                'body'    => (array) $this->serializer->unserialize($this->header->getContent())
+                'body'    => (array) $this->unserialize($this->header->getContent())
             ],
             'RESPONSE:' => $content,
         ];
         $filtered = $this->filterContent($data);
         // Update content variable globally.
-        $this->file->create($this->buildContent($filtered));
+        $this->file->write($this->buildContent($filtered));
 
         return $this;
     }
@@ -131,5 +131,17 @@ class Logger implements LoggerInterface
             $content = json_encode($data, JSON_PRETTY_PRINT);
         }
         return (string) PHP_EOL . date(self::LOG_DATE_FORMAT) . ' ' . $content;
+    }
+
+    /**
+     * @param string $content
+     * @return array|string|null
+     */
+    private function unserialize($content)
+    {
+        if (!empty($content)) {
+            return $this->serializer->unserialize($content);
+        }
+        return $content;
     }
 }
