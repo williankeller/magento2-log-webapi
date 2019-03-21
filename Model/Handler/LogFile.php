@@ -60,7 +60,7 @@ class LogFile implements LogFileInterface
      */
     public function createDirectory()
     {
-        $directory = BP . '/' . $this->helper->directory();
+        $directory = BP . $this->helper->directory();
         $this->file->createDirectory($directory, self::PERMISSION);
 
         return $directory;
