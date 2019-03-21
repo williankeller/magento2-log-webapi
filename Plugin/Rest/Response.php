@@ -25,12 +25,12 @@ class Response
     /**
      * @var \Magestat\LogWebapi\Api\LoggerInterface
      */
-    protected $logger;
+    private $logger;
 
     /**
      * @var array
      */
-    protected $currentRequest;
+    private $currentRequest;
 
     /**
      * @param LoggerInterface $logger
