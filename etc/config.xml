@@ -14,7 +14,7 @@
     <default>
         <magestat_logwebapi>
             <settings>
-                <directory>/var/log/webapi</directory>
+                <directory>/var/log/webapi/</directory>
                 <filter>Cookie</filter>
             </settings>
         </magestat_logwebapi>
