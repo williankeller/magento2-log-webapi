@@ -47,7 +47,7 @@ class Response
      * @param RestResponse $subject
      * @param array $outputData
      */
-    public function beforePrepareResponse(RestResponse $subject, $outputData = null)
+    public function beforePrepareResponse(RestResponse $subject, $outputData)
     {
         $this->logger->write($outputData);
     }
