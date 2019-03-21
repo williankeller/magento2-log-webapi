@@ -17,7 +17,7 @@
         </tab>
         <section id="magestat_logwebapi" showInDefault="1">
             <tab>magestat</tab>
-            <label>Log Web API</label>
+            <label>Log Web API Transactions</label>
             <resource>Magestat_LogWebapi::config</resource>
             <group id="module" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
                 <label>Enable Module</label>
