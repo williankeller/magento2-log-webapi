@@ -53,4 +53,4 @@ If you encounter any problems or bugs, please open an issue on [GitHub](https://
 
 Need help setting up or want to customize this extension to meet your business needs? If we like your idea we will add this feature for free or at a discounted rate.
 
-© Magestat.
+© Magestat
