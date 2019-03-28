@@ -1,5 +1,4 @@
-Log Web API transactions for Magento 2
-=====================
+# Log Web API transactions for Magento 2
 
 This extension creates a log file and saves all transactions that are requested through your store's Rest API.
 
@@ -8,7 +7,6 @@ This extension creates a log file and saves all transactions that are requested 
 ## 1. Installation
 
 ### Install via composer (recommend)
-
 
 Run the following command in Magento 2 root folder:
 ```sh
@@ -46,11 +44,10 @@ php bin/magento cache:clean
 
 Want to contribute to this extension? The quickest way is to open a [pull request on GitHub](https://help.github.com/articles/using-pull-requests).
 
-
 ## Support
 
 If you encounter any problems or bugs, please open an issue on [GitHub](https://github.com/magestat/magento2-log-webapi/issues).
 
-Need help setting up or want to customize this extension to meet your business needs? If we like your idea we will add this feature for free or at a discounted rate.
+Need help setting up or want to customize this extension to meet your business needs? Please open an issue and if we like your idea we will add this feature for free or at a discounted rate.
 
 © Magestat
