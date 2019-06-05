@@ -25,6 +25,8 @@ git clone git@github.com:magestat/magento2-log-webapi.git app/code/Magestat/LogW
 Run the following command in Magento 2 root folder:
 ```sh
 php bin/magento module:enable Magestat_LogWebapi --clear-static-content
+```
+```sh
 php bin/magento setup:upgrade
 ```
 
