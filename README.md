@@ -2,7 +2,7 @@
 
 This extension creates a log file and saves all transactions that are requested through your store's Rest API.
 
-[![Build Status](https://travis-ci.org/magestat/magento2-log-webapi.svg?branch=develop)](https://travis-ci.org/magestat/magento2-log-webapi) [![Packagist](https://img.shields.io/packagist/v/magestat/module-log-webapi.svg)](https://packagist.org/packages/magestat/module-log-webapi)
+[![Build Status](https://travis-ci.org/magestat/magento2-log-webapi.svg?branch=develop)](https://travis-ci.org/magestat/magento2-log-webapi) [![Packagist](https://img.shields.io/packagist/v/magestat/module-log-webapi.svg)](https://packagist.org/packages/magestat/module-log-webapi) [![Downloads](https://img.shields.io/packagist/dt/magestat/module-log-webapi.svg)](https://packagist.org/packages/magestat/module-log-webapi)
 
 ## 1. Installation
 
