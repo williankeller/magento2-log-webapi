@@ -2,7 +2,7 @@
 <!--
 /**
  * Log Webapi: Module provides log in file for all transactions in Web API.
- * Copyright (C) 2018 Magestat
+ * Copyright (C) 2018-2019 Magestat
  *
  * This file included in Magestat/LogWebapi is licensed under OSL 3.0
  *
@@ -18,5 +18,12 @@
     <!-- Plugins -->
     <type name="Magento\Framework\Webapi\Rest\Response">
         <plugin name="magestat-rest-response" type="Magestat\LogWebapi\Plugin\Rest\Response"/>
+    </type>
+ 
+    <!-- Proxies -->
+    <type name="Magestat\LogWebapi\Model\Logger">
+        <arguments>
+            <argument name="httpRequest" xsi:type="object">Magento\Framework\HTTP\PhpEnvironment\Request\Proxy</argument>
+        </arguments>
     </type>
 </config>
