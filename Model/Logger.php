@@ -2,7 +2,7 @@
 
 /**
  * Log Webapi: Module provides log in file for all transactions in Web API.
- * Copyright (C) 2018 Magestat
+ * Copyright (C) 2018-2019 Magestat
  *
  * This file included in Magestat/LogWebapi is licensed under OSL 3.0
  *
@@ -13,7 +13,7 @@
 namespace Magestat\LogWebapi\Model;
 
 use Magento\Framework\Serialize\SerializerInterface;
-use Magento\Framework\HTTP\PhpEnvironment\Request\Proxy as HttpRequest;
+use Magento\Framework\HTTP\PhpEnvironment\Request as HttpRequest;
 
 use Magestat\LogWebapi\Api\LoggerInterface;
 use Magestat\LogWebapi\Api\Handler\LogFileInterface;
@@ -21,27 +21,26 @@ use Magestat\LogWebapi\Helper\Data as Helper;
 
 /**
  * Class Logger
- * @package Magestat\LogWebapi\Model
  */
 class Logger implements LoggerInterface
 {
     /**
-     * @var \Magento\Framework\Serialize\SerializerInterface
+     * @var SerializerInterface
      */
     private $serializer;
 
     /**
-     * @var \Magento\Framework\HTTP\PhpEnvironment\Request
+     * @var Request
      */
     private $header;
 
     /**
-     * @var \Magestat\LogWebapi\Api\LogFileInterface
+     * @var LogFileInterface
      */
     private $file;
 
     /**
-     * @var \Magestat\LogWebapi\Helper\Data
+     * @var Data
      */
     private $helper;
 
