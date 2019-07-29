@@ -14,7 +14,6 @@ namespace Magestat\LogWebapi\Api\Handler;
 
 /**
  * Interface LogFileInterface
- * @package Magestat\LogWebapi\Api\Handler
  * @api
  */
 interface LogFileInterface
