@@ -2,7 +2,7 @@
 
 /**
  * Log Webapi: Module provides log in file for all transactions in Web API.
- * Copyright (C) 2018 Magestat
+ * Copyright (C) Magestat
  *
  * This file included in Magestat/LogWebapi is licensed under OSL 3.0
  *
@@ -14,17 +14,16 @@ namespace Magestat\LogWebapi\Test\Unit\Rest\Response\Renderer;
 
 /**
  * Class JsonTest
- * @package Magestat\LogWebapi\Test\Unit\Rest\Response\Renderer
  */
 class JsonTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \Magento\Framework\Webapi\Rest\Response\Renderer\Json
+     * @var Json
      */
     private $_restJsonRenderer;
 
     /**
-     * @var \Magento\Framework\Json\Encoder
+     * @var Encoder
      */
     private $encoderMock;
 

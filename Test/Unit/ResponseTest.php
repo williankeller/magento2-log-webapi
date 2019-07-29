@@ -2,7 +2,7 @@
 
 /**
  * Log Webapi: Module provides log in file for all transactions in Web API.
- * Copyright (C) 2018 Magestat
+ * Copyright (C) Magestat
  *
  * This file included in Magestat/LogWebapi is licensed under OSL 3.0
  *
@@ -14,14 +14,13 @@ namespace Magestat\LogWebapi\Test\Unit;
 
 /**
  * Class ResponseTest
- * @package Magestat\LogWebapi\Test\Unit
  */
 class ResponseTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Response object.
      *
-     * @var \Magento\Framework\Webapi\Response
+     * @var Response
      */
     private $_response;
 

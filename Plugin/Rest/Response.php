@@ -2,7 +2,7 @@
 
 /**
  * Log Webapi: Module provides log in file for all transactions in Web API.
- * Copyright (C) 2018 Magestat
+ * Copyright (C) Magestat
  *
  * This file included in Magestat/LogWebapi is licensed under OSL 3.0
  *
@@ -16,14 +16,12 @@ use Magento\Framework\Webapi\Rest\Response as RestResponse;
 use Magestat\LogWebapi\Api\LoggerInterface;
 
 /**
- * Class Response
  * Intercept front controller for WebAPI REST area.
- * @package Magestat\LogWebapi\Plugin\Rest
  */
 class Response
 {
     /**
-     * @var \Magestat\LogWebapi\Api\LoggerInterface
+     * @var LoggerInterface
      */
     private $logger;
 

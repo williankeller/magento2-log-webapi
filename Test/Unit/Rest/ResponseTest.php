@@ -1,7 +1,7 @@
 <?php
 /**
  * Log Webapi: Module provides log in file for all transactions in Web API.
- * Copyright (C) 2018 Magestat
+ * Copyright (C) Magestat
  *
  * This file included in Magestat/LogWebapi is licensed under OSL 3.0
  *
@@ -15,7 +15,6 @@ use Magento\Framework\Phrase;
 
 /**
  * Class ResponseTest
- * @package Magestat\LogWebapi\Test\Unit\Rest
  */
 class ResponseTest extends \PHPUnit\Framework\TestCase
 {

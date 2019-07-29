@@ -2,7 +2,7 @@
 
 /**
  * Log Webapi: Module provides log in file for all transactions in Web API.
- * Copyright (C) 2018 Magestat
+ * Copyright (C) Magestat
  *
  * This file included in Magestat/LogWebapi is licensed under OSL 3.0
  *
@@ -14,7 +14,6 @@ namespace Magestat\LogWebapi\Model\Source;
 
 /**
  * Class Format
- * @package Magestat\LogWebapi\Model\Source
  */
 class Format implements \Magento\Framework\Option\ArrayInterface
 {
@@ -26,8 +25,14 @@ class Format implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray()
     {
         return [
-            ['value' => 1, 'label' => __('Create a Different File Each Day')],
-            ['value' => 2, 'label' => __('Concat All the Data to the Same File')]
+            [
+                'value' => 1,
+                'label' => __('Create a Different File Each Day')
+            ],
+            [
+                'value' => 2,
+                'label' => __('Concat All the Data to the Same File')
+            ]
         ];
     }
 }

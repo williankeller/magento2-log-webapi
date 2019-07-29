@@ -2,7 +2,7 @@
 
 /**
  * Log Webapi: Module provides log in file for all transactions in Web API.
- * Copyright (C) 2018-2019 Magestat
+ * Copyright (C) Magestat
  *
  * This file included in Magestat/LogWebapi is licensed under OSL 3.0
  *
@@ -24,12 +24,12 @@ use Magestat\LogWebapi\Helper\Data as Helper;
 class LogFile implements LogFileInterface
 {
     /**
-     * @var \Magento\Framework\Filesystem\Driver\File
+     * @var File
      */
     private $file;
 
     /**
-     * @var \Magestat\LogWebapi\Helper\Data
+     * @var Data
      */
     private $helper;
 

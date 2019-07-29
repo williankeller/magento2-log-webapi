@@ -35,7 +35,7 @@ Clear the caches:
 php bin/magento cache:clean
 ```
 
-## 3. Configuration
+## Configuration
 
 1. Go to **Stores** > **Configuration** > **MAGESTAT** > **Log Webapi**.
 2. Select **Enabled** option to enable the module.
