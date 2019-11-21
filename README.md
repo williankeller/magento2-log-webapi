@@ -2,7 +2,7 @@
 
 This extension creates a log file and saves all transactions that are requested through your store's Rest API.
 
-[![Build Status](https://travis-ci.org/magestat/magento2-log-webapi.svg?branch=develop)](https://travis-ci.org/magestat/magento2-log-webapi) [![Packagist](https://img.shields.io/packagist/v/magestat/module-log-webapi.svg)](https://packagist.org/packages/magestat/module-log-webapi) [![Downloads](https://img.shields.io/packagist/dt/magestat/module-log-webapi.svg)](https://packagist.org/packages/magestat/module-log-webapi)
+[![Build Status](https://travis-ci.org/williankeller/magento2-log-webapi.svg?branch=develop)](https://travis-ci.org/williankeller/magento2-log-webapi) [![Packagist](https://img.shields.io/packagist/v/magestat/module-log-webapi.svg)](https://packagist.org/packages/magestat/module-log-webapi) [![Downloads](https://img.shields.io/packagist/dt/magestat/module-log-webapi.svg)](https://packagist.org/packages/magestat/module-log-webapi)
 
 ## Installation
 
@@ -17,7 +17,7 @@ composer require magestat/module-log-webapi
 
 Run the following command in yourMagento 2 root folder:
 ```sh
-git clone git@github.com:magestat/magento2-log-webapi.git app/code/Magestat/LogWebapi
+git clone git@github.com:williankeller/magento2-log-webapi.git app/code/Magestat/LogWebapi
 ```
 
 ## Activation
@@ -48,7 +48,7 @@ Want to contribute to this extension? The quickest way is to open a [pull reques
 
 ## Support
 
-If you encounter any problems or bugs, please open an issue on [GitHub](https://github.com/magestat/magento2-log-webapi/issues).
+If you encounter any problems or bugs, please open an issue on [GitHub](https://github.com/williankeller/magento2-log-webapi/issues).
 
 Need help setting up or want to customize this extension to meet your business needs? Please open an issue and if we like your idea we will add this feature for free.
 
