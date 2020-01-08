@@ -1,25 +1,15 @@
 <?php
 
-/**
- * Log Webapi: Module provides log in file for all transactions in Web API.
- * Copyright (C) Magestat
- *
- * This file included in Magestat/LogWebapi is licensed under OSL 3.0
- *
- * http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
- * Please see LICENSE.txt for the full text of the OSL 3.0 license
- */
-
 namespace Magestat\LogWebapi\Model\Handler;
 
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem\Driver\File;
-
 use Magestat\LogWebapi\Api\Handler\LogFileInterface;
 use Magestat\LogWebapi\Helper\Data as Helper;
 
 /**
  * Class LogFile
+ * Responsible for create the dir, set file name and write the logs.
  */
 class LogFile implements LogFileInterface
 {
@@ -34,7 +24,6 @@ class LogFile implements LogFileInterface
     private $helper;
 
     /**
-     * LogFile constructor.
      * @param File $file
      * @param Helper $helper
      */
@@ -77,9 +66,6 @@ class LogFile implements LogFileInterface
                 break;
             // Build a unique file with all data there.
             case 2:
-                $filename = self::FILE_NAME;
-                break;
-            // Default.
             default:
                 $filename = self::FILE_NAME;
                 break;
@@ -88,7 +74,7 @@ class LogFile implements LogFileInterface
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function buildFileName()
     {

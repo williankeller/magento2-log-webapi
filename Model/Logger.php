@@ -1,26 +1,16 @@
 <?php
 
-/**
- * Log Webapi: Module provides log in file for all transactions in Web API.
- * Copyright (C) Magestat
- *
- * This file included in Magestat/LogWebapi is licensed under OSL 3.0
- *
- * http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
- * Please see LICENSE.txt for the full text of the OSL 3.0 license
- */
-
 namespace Magestat\LogWebapi\Model;
 
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\HTTP\PhpEnvironment\Request as HttpRequest;
-
 use Magestat\LogWebapi\Api\LoggerInterface;
 use Magestat\LogWebapi\Api\Handler\LogFileInterface;
 use Magestat\LogWebapi\Helper\Data as Helper;
 
 /**
  * Class Logger
+ * Get log data and create structure to be saved.
  */
 class Logger implements LoggerInterface
 {
@@ -45,7 +35,6 @@ class Logger implements LoggerInterface
     private $helper;
 
     /**
-     * Logger constructor.
      * @param SerializerInterface $serializer
      * @param HttpRequest $header
      * @param LogFileInterface $file
@@ -124,7 +113,6 @@ class Logger implements LoggerInterface
     public function buildContent($data)
     {
         $content = $this->serializer->serialize($data);
-
         // Should print content using JSON pretty print format?
         if ($this->helper->printing()) {
             $content = json_encode($data, JSON_PRETTY_PRINT);

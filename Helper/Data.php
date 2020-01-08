@@ -1,15 +1,5 @@
 <?php
 
-/**
- * Log Webapi: Module provides log in file for all transactions in Web API.
- * Copyright (C) Magestat
- *
- * This file included in Magestat/LogWebapi is licensed under OSL 3.0
- *
- * http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
- * Please see LICENSE.txt for the full text of the OSL 3.0 license
- */
-
 namespace Magestat\LogWebapi\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
@@ -17,6 +7,7 @@ use Magento\Store\Model\ScopeInterface;
 
 /**
  * Class Data
+ * Get configuration from the admin
  */
 class Data extends AbstractHelper
 {
@@ -28,7 +19,11 @@ class Data extends AbstractHelper
      */
     public function isActive($storeId = null)
     {
-        return (bool) $this->getConfig('magestat_logwebapi/module/enabled', $storeId);
+        return $this->scopeConfig->isSetFlag(
+            'magestat_logwebapi/module/enabled',
+            ScopeInterface::SCOPE_STORE,
+            $storeId
+        );
     }
 
     /**
@@ -39,7 +34,11 @@ class Data extends AbstractHelper
      */
     public function directory($storeId = null)
     {
-        return $this->getConfig('magestat_logwebapi/settings/directory', $storeId);
+        return $this->scopeConfig->getValue(
+            'magestat_logwebapi/settings/directory',
+            ScopeInterface::SCOPE_STORE,
+            $storeId
+        );
     }
 
     /**
@@ -50,7 +49,11 @@ class Data extends AbstractHelper
      */
     public function filters($storeId = null)
     {
-        return $this->getConfig('magestat_logwebapi/settings/filter', $storeId);
+        return $this->scopeConfig->getValue(
+            'magestat_logwebapi/settings/filter',
+            ScopeInterface::SCOPE_STORE,
+            $storeId
+        );
     }
 
     /**
@@ -61,7 +64,11 @@ class Data extends AbstractHelper
      */
     public function format($storeId = null)
     {
-        return $this->getConfig('magestat_logwebapi/settings/format', $storeId);
+        return $this->scopeConfig->getValue(
+            'magestat_logwebapi/settings/format',
+            ScopeInterface::SCOPE_STORE,
+            $storeId
+        );
     }
 
     /**
@@ -72,7 +79,11 @@ class Data extends AbstractHelper
      */
     public function printing($storeId = null)
     {
-        return (bool) $this->getConfig('magestat_logwebapi/settings/printing', $storeId);
+        return $this->scopeConfig->getValue(
+            'magestat_logwebapi/settings/printing',
+            ScopeInterface::SCOPE_STORE,
+            $storeId
+        );
     }
 
     /**
