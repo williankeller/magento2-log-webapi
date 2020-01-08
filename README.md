@@ -2,7 +2,9 @@
 
 This extension creates a log file and saves all transactions that are requested through your store's Rest API.
 
-[![Build Status](https://travis-ci.org/williankeller/magento2-log-webapi.svg?branch=develop)](https://travis-ci.org/williankeller/magento2-log-webapi) [![Packagist](https://img.shields.io/packagist/v/magestat/module-log-webapi.svg)](https://packagist.org/packages/magestat/module-log-webapi) [![Downloads](https://img.shields.io/packagist/dt/magestat/module-log-webapi.svg)](https://packagist.org/packages/magestat/module-log-webapi)
+[![Build Status](https://travis-ci.org/williankeller/magento2-log-webapi.svg?branch=develop)](https://travis-ci.org/williankeller/magento2-log-webapi)
+[![Packagist](https://img.shields.io/packagist/v/magestat/module-log-webapi.svg)](https://packagist.org/packages/magestat/module-log-webapi)
+[![Downloads](https://img.shields.io/packagist/dt/magestat/module-log-webapi.svg)](https://packagist.org/packages/magestat/module-log-webapi)
 
 ## Installation
 
@@ -37,7 +39,7 @@ php bin/magento cache:clean
 
 ## Configuration
 
-1. Go to **Stores** > **Configuration** > **MAGESTAT** > **Log Webapi**.
+1. Go to **STORES** > **Configuration** > **MAGESTAT** > **Log Webapi**.
 2. Select **Enabled** option to enable the module.
 3. Expand **Settings** Tab.
 4. Fill the required fields.
@@ -52,4 +54,3 @@ If you encounter any problems or bugs, please open an issue on [GitHub](https://
 
 Need help setting up or want to customize this extension to meet your business needs? Please open an issue and if we like your idea we will add this feature for free.
 
-© Magestat
