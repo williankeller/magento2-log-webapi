@@ -5,7 +5,7 @@
     "license": "OSL-3.0",
     "version": "1.0.3",
     "support": {
-        "issues": "https://github.com/williankeller/magento2-log-webapi/issues/"
+        "issues": "https://github.com/magestat/magento2-log-webapi/issues/"
     },
     "require": {
         "magento/framework": ">=100.1.0"
