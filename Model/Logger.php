@@ -131,7 +131,7 @@ class Logger implements LoggerInterface
         $needleKey = \explode(self::SEPARATOR, $this->helper->filters());
 
         foreach ($array as $key => $value) {
-            if (\in_array($key, $needleKey)) {
+            if (\in_array((string) $key, $needleKey)) {
                 unset($array[$key]);
             }
 
