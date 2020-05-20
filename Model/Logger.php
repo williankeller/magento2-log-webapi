@@ -5,7 +5,6 @@ namespace Magestat\LogWebapi\Model;
 use Magento\Framework\Exception\ValidatorException;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\HTTP\PhpEnvironment\Request as HttpRequest;
-use Magento\Framework\Webapi\Rest\Request\Deserializer\Xml;
 use Magestat\LogWebapi\Api\LoggerInterface;
 use Magestat\LogWebapi\Api\Handler\LogFileInterface;
 use Magestat\LogWebapi\Helper\Data as Helper;
