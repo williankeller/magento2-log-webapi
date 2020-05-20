@@ -2,8 +2,10 @@
 
 namespace Magestat\LogWebapi\Model;
 
+use Magento\Framework\Exception\ValidatorException;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\HTTP\PhpEnvironment\Request as HttpRequest;
+use Magento\Framework\Webapi\Rest\Request\Deserializer\Xml;
 use Magestat\LogWebapi\Api\LoggerInterface;
 use Magestat\LogWebapi\Api\Handler\LogFileInterface;
 use Magestat\LogWebapi\Helper\Data as Helper;
@@ -14,6 +16,9 @@ use Magestat\LogWebapi\Helper\Data as Helper;
  */
 class Logger implements LoggerInterface
 {
+    const MIME_TYPE_JSON = 'json';
+    const MIME_TYPE_XML  = 'xml';
+
     /**
      * @var SerializerInterface
      */
@@ -53,6 +58,25 @@ class Logger implements LoggerInterface
     }
 
     /**
+     * Parses request content mime type.
+     *
+     * @return string
+     * @throws ValidatorException
+     */
+    private function parseMimeType()
+    {
+        $contentMimeType = $this->header->getHeader('Content-Type');
+
+        if (in_array($contentMimeType, ['application/json', 'application/xml'])) {
+            return explode('/', $contentMimeType)[1];
+        }
+
+        throw new ValidatorException(
+            __('Unsupported MIME type provided = %1', $contentMimeType)
+        );
+    }
+
+    /**
      * @inheritdoc
      */
     public function isEnable()
@@ -60,6 +84,7 @@ class Logger implements LoggerInterface
         if ($this->helper->isActive() && !empty($this->helper->directory())) {
             return true;
         }
+
         return false;
     }
 
@@ -68,17 +93,25 @@ class Logger implements LoggerInterface
      */
     public function write($content)
     {
+        try {
+            $mimeType = $this->parseMimeType();
+        } catch (ValidatorException $e) {
+            return $this;
+        }
+
         // Build contend data.
         $data = [
             'REQUEST:' => [
                 'method'  => $this->header->getMethod(),
                 'uri'     => $this->header->getRequestUri(),
                 'headers' => (array) $this->header->getHeaders()->toArray(),
-                'body'    => (array) $this->unserialize($this->header->getContent())
+                'body'    => (array) $this->unserialize($this->header->getContent(), $mimeType)
             ],
             'RESPONSE:' => $content,
         ];
+
         $filtered = $this->filterContent($data);
+
         // Update content variable globally.
         $this->file->write($this->buildContent($filtered));
 
@@ -93,6 +126,7 @@ class Logger implements LoggerInterface
         if (!$this->helper->filters()) {
             return $array;
         }
+
         // Retrieve filterable keys.
         $needleKey = \explode(self::SEPARATOR, $this->helper->filters());
 
@@ -100,10 +134,12 @@ class Logger implements LoggerInterface
             if (\in_array($key, $needleKey)) {
                 unset($array[$key]);
             }
+
             if (\is_array($value)) {
                 $array[$key] = $this->filterContent($value);
             }
         }
+
         return $array;
     }
 
@@ -113,22 +149,27 @@ class Logger implements LoggerInterface
     public function buildContent($data)
     {
         $content = $this->serializer->serialize($data);
+
         // Should print content using JSON pretty print format?
         if ($this->helper->printing()) {
             $content = json_encode($data, JSON_PRETTY_PRINT);
         }
+
         return (string) PHP_EOL . date(self::LOG_DATE_FORMAT) . ' ' . $content;
     }
 
     /**
      * @param string $content
+     * @param string $mimeType
+     *
      * @return array|string|null
      */
-    private function unserialize($content)
+    private function unserialize($content, $mimeType = self::MIME_TYPE_JSON)
     {
-        if (!empty($content)) {
+        if (!empty($content) && $mimeType == self::MIME_TYPE_JSON) {
             return $this->serializer->unserialize($content);
         }
+
         return $content;
     }
 }
