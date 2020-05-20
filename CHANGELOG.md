@@ -1,8 +1,8 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-### [1.0.5](https://github.com/magestat/magento2-log-webapi/releases/tag/1.0.5) - 05/20/2020
-#### Improved
+### [1.2.0](https://github.com/magestat/magento2-log-webapi/releases/tag/1.2.0) - 05/20/2020
+#### Added
 - Compatibility with XML formatted requests.
 
 #### Fixed
